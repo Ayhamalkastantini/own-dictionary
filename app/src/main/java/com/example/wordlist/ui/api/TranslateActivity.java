@@ -60,12 +60,6 @@ public class TranslateActivity extends AppCompatActivity{
 
     public void translate() {
         String translateText = textToTranslate.getText().toString().trim();
-        String translatedTexts = translatedText.getText().toString().trim();
-
-        Gson gson =
-                new GsonBuilder()
-                        .registerTypeAdapter(WordsTranslaterAPI.class, new MyDeserializer<WordsTranslaterAPI>())
-                        .create();
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)

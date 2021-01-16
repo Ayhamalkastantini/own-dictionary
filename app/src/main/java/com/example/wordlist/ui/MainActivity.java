@@ -9,6 +9,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -24,7 +28,9 @@ import com.example.wordlist.ui.list.WordViewModel;
 import com.example.wordlist.domain.Words;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     //veiw Model
@@ -100,12 +106,7 @@ public class MainActivity extends AppCompatActivity {
                 mWordViewModel.delete(mWordAdapter.getWordAt(position));
             }
         }).attachToRecyclerView(mRecyclerView);
-
-        /*******************
-         * API implementation
-         ***/
-
-
+        
     }
 
     @Override
