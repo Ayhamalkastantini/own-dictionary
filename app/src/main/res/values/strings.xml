@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">WordList</string>
+    <string name="word">Word</string>
+    <string name="translate">Translate</string>
 </resources>

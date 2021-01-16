@@ -1,6 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.add.AddNewWordActivity"
+    >
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <EditText
+        android:id="@+id/textToTranslate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/word"
+        android:layout_margin="10dp"
+        android:inputType="text"
+        android:maxLines="5"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        tools:ignore="MissingConstraints"
+        android:padding="30px"
+        android:autofillHints="" />
+
+    <Button
+        android:id="@+id/translateText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="@string/translate"
+        android:layout_below="@+id/textToTranslate"/>
+
+    <TextView
+        android:id="@+id/translatedText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/translateText"
+        android:padding="30px"
+        android:layout_marginTop="52dp" />
+
+
+</RelativeLayout>

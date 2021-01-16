@@ -14,10 +14,11 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
+import com.example.wordlist.network.WordsTranslaterAPI;
 import com.example.wordlist.ui.add.AddNewWordActivity;
 import com.example.wordlist.R;
+import com.example.wordlist.ui.api.TranslateActivity;
 import com.example.wordlist.ui.list.WordAdapter;
 import com.example.wordlist.ui.list.WordViewModel;
 import com.example.wordlist.domain.Words;
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     //RecyclerView
     private RecyclerView mRecyclerView;
     private WordAdapter mWordAdapter;
+    private WordsTranslaterAPI wordsTranslaterAPI;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(i, 1);
             }
         });
+
 
         //recycler view
         mRecyclerView = findViewById(R.id.words_recycler_view);
@@ -97,6 +100,12 @@ public class MainActivity extends AppCompatActivity {
                 mWordViewModel.delete(mWordAdapter.getWordAt(position));
             }
         }).attachToRecyclerView(mRecyclerView);
+
+        /*******************
+         * API implementation
+         ***/
+
+
     }
 
     @Override
@@ -109,13 +118,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.delete_all_words:
-                //delete all words
-                mWordViewModel.deleteAllWords();
-                Toast.makeText(this, "All words deleted", Toast.LENGTH_LONG).show();
+            case R.id.translate:
+                Intent i = new Intent(MainActivity.this, TranslateActivity.class);
+                startActivityForResult(i, 1);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
+
+
+
 }

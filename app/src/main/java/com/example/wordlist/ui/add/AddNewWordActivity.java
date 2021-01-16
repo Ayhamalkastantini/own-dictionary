@@ -31,8 +31,8 @@ public class AddNewWordActivity extends AppCompatActivity {
     public static final String EXTRA_MEANING = "com.example.wordlist.meaning";
     public static final String EXTRA_TYPE = "com.example.wordlist.type";
 
-    //veiw Model fo add new word Activity
-    private AddNewWordViewModel mVeiwModel;
+    //view Model for adding new word Activity
+    private AddNewWordViewModel mViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,9 +60,7 @@ public class AddNewWordActivity extends AppCompatActivity {
             setTitle("Add new Word");
             editMode = false;
         }
-
-
-        mVeiwModel = ViewModelProviders.of(this).get(AddNewWordViewModel.class);
+        mViewModel = ViewModelProviders.of(this).get(AddNewWordViewModel.class);
     }
 
     @Override
@@ -86,6 +84,7 @@ public class AddNewWordActivity extends AppCompatActivity {
     }
 
 
+
     public void saveWord() {
         String word = wordEditText.getText().toString().trim();
         String meaning = meaningEditText.getText().toString().trim();
@@ -100,9 +99,9 @@ public class AddNewWordActivity extends AppCompatActivity {
 
         if(editMode){
             wordObject.setId(mID);
-            mVeiwModel.update(wordObject);
+            mViewModel.update(wordObject);
         }else{
-            mVeiwModel.insert(wordObject);
+            mViewModel.insert(wordObject);
         }
         finish();
     }
