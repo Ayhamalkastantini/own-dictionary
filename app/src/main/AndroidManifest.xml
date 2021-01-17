@@ -16,6 +16,8 @@
             android:parentActivityName=".ui.MainActivity"></activity>
         <activity android:name=".ui.sensors.gps.LocationActivity"
             android:parentActivityName=".ui.MainActivity"></activity>
+        <activity android:name=".ui.sensors.thermometer.ThermometerActivity"
+            android:parentActivityName=".ui.MainActivity"></activity>
         <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -9,4 +9,8 @@
     android:title="Location"
     android:id="@+id/location"
     app:showAsAction="never"/>
+    <item
+        android:title="Thermometer"
+        android:id="@+id/thermometer"
+        app:showAsAction="never"/>
 </menu>

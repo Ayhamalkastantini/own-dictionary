@@ -1,5 +1,12 @@
 package com.example.wordlist.ui;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -8,30 +15,18 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
-import android.location.Address;
-import android.location.Geocoder;
-import android.location.Location;
-import android.location.LocationListener;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-
+import com.example.wordlist.R;
+import com.example.wordlist.domain.Words;
 import com.example.wordlist.network.WordsTranslaterAPI;
 import com.example.wordlist.ui.add.AddNewWordActivity;
-import com.example.wordlist.R;
 import com.example.wordlist.ui.api.TranslateActivity;
 import com.example.wordlist.ui.list.WordAdapter;
 import com.example.wordlist.ui.list.WordViewModel;
-import com.example.wordlist.domain.Words;
 import com.example.wordlist.ui.sensors.gps.LocationActivity;
+import com.example.wordlist.ui.sensors.thermometer.ThermometerActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.io.IOException;
 import java.util.List;
-import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     //veiw Model
@@ -46,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        getString(R.string.app_name);
         //floating button
         FloatingActionButton floatingActionButton = findViewById(R.id.button_add_word);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
@@ -127,6 +122,10 @@ public class MainActivity extends AppCompatActivity {
             case R.id.location:
                 Intent j = new Intent(MainActivity.this, LocationActivity.class);
                 startActivityForResult(j, 1);
+                return true;
+            case R.id.thermometer:
+                Intent c = new Intent(MainActivity.this, ThermometerActivity.class);
+                startActivityForResult(c, 1);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

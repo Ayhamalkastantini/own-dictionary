@@ -33,7 +33,7 @@ import androidx.core.app.ActivityCompat;
 
 import com.example.wordlist.R;
 
-public class LocationActivity extends AppCompatActivity implements OnClickListener {
+public class LocationActivity extends AppCompatActivity {
 
     private LocationManager locationMangaer = null;
     private LocationListener locationListener = null;
@@ -59,27 +59,23 @@ public class LocationActivity extends AppCompatActivity implements OnClickListen
         pb.setVisibility(View.INVISIBLE);
 
         editLocation = (EditText) findViewById(R.id.editTextLocation);
-
         btnGetLocation = (Button) findViewById(R.id.btnLocation);
-        btnGetLocation.setOnClickListener(this);
-
+        setTitle("Get Current location");
         locationMangaer = (LocationManager)
                 getSystemService(Context.LOCATION_SERVICE);
 
-    }
-
-    @Override
-    public void onClick(View v) {
+        btnGetLocation.setOnClickListener(view -> {
             pb.setVisibility(View.VISIBLE);
             locationListener = new MyLocationListener();
 
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                alertbox("Gps Status!!", "Your GPS is: OFF");
+                alertbox("GPS Status!!", "Your GPS is: OFF");
             }else{
                 locationMangaer.requestLocationUpdates(LocationManager
                         .GPS_PROVIDER, 5000, 10, locationListener);
 
             }
+        });
     }
 
 
