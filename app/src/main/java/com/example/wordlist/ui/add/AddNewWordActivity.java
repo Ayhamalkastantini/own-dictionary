@@ -43,8 +43,6 @@ public class AddNewWordActivity extends AppCompatActivity {
         meaningEditText = findViewById(R.id.edit_text_meaning);
         typeEditText = findViewById(R.id.edit_text_type);
 
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_exit);
-
         Intent i = getIntent();
         if(i.hasExtra(EXTRA_ID))
         {

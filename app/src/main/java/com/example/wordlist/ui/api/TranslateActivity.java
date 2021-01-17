@@ -42,8 +42,6 @@ public class TranslateActivity extends AppCompatActivity{
         translatedText = findViewById(R.id.translatedText);
         translateTextButton = findViewById(R.id.translateText);
 
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_exit);
-
         Intent i = getIntent();
 
         setTitle("Google Translate");
@@ -54,8 +52,6 @@ public class TranslateActivity extends AppCompatActivity{
         });
 
     }
-
-
 
 
     public void translate() {

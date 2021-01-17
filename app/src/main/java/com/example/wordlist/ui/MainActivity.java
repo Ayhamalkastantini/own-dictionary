@@ -26,6 +26,7 @@ import com.example.wordlist.ui.api.TranslateActivity;
 import com.example.wordlist.ui.list.WordAdapter;
 import com.example.wordlist.ui.list.WordViewModel;
 import com.example.wordlist.domain.Words;
+import com.example.wordlist.ui.sensors.gps.LocationActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.IOException;
@@ -122,6 +123,10 @@ public class MainActivity extends AppCompatActivity {
             case R.id.translate:
                 Intent i = new Intent(MainActivity.this, TranslateActivity.class);
                 startActivityForResult(i, 1);
+                return true;
+            case R.id.location:
+                Intent j = new Intent(MainActivity.this, LocationActivity.class);
+                startActivityForResult(j, 1);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

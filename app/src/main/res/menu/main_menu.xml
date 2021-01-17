@@ -4,6 +4,9 @@
 <item
     android:title="Translate"
     android:id="@+id/translate"
-    app:showAsAction="never">
-</item>
+    app:showAsAction="never"/>
+<item
+    android:title="Location"
+    android:id="@+id/location"
+    app:showAsAction="never"/>
 </menu>
