@@ -1,9 +1,5 @@
 package com.example.wordlist.ui.add;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProviders;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,9 +8,17 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
+
 import com.example.wordlist.R;
 import com.example.wordlist.domain.Words;
 
+
+/**
+ * The class Add new word activity extends application compat activity
+ */
 public class AddNewWordActivity extends AppCompatActivity {
 
     private EditText wordEditText;
@@ -62,14 +66,32 @@ public class AddNewWordActivity extends AppCompatActivity {
     }
 
     @Override
+
+/**
+ *
+ * On create options menu
+ *
+ * @param menu  the menu
+ * @return boolean
+ */
     public boolean onCreateOptionsMenu(Menu menu) {
+
         MenuInflater m = getMenuInflater();
         m.inflate(R.menu.menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
+
+/**
+ *
+ * On options item selected
+ *
+ * @param MenuItem  the menu item
+ * @return boolean
+ */
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
         switch (item.getItemId()) {
             case R.id.save_word:
                 saveWord();
@@ -83,7 +105,14 @@ public class AddNewWordActivity extends AppCompatActivity {
 
 
 
+
+    /**
+     *
+     * Save word
+     *
+     */
     public void saveWord() {
+
         String word = wordEditText.getText().toString().trim();
         String meaning = meaningEditText.getText().toString().trim();
         String type = typeEditText.getText().toString().trim();

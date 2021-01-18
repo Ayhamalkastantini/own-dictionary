@@ -8,6 +8,10 @@ import android.view.ViewConfiguration;
 
 import java.util.Random;
 
+
+/**
+ * The class Utils
+ */
 public class Utils {
     private static DisplayMetrics mMetrics;
     private static int mMinimumFlingVelocity = 50;
@@ -21,6 +25,7 @@ public class Utils {
     @Deprecated
     public static void init(Resources res) {
 
+
         mMetrics = res.getDisplayMetrics();
 
         // noinspection deprecation
@@ -28,7 +33,17 @@ public class Utils {
         // noinspection deprecation
         mMaximumFlingVelocity = ViewConfiguration.getMaximumFlingVelocity();
     }
+
+    /**
+     *
+     * Convert dp to pixel
+     *
+     * @param dp  the dp
+     * @param context  the context
+     * @return float
+     */
     public static float convertDpToPixel(float dp, Context context) {
+
 
         if (mMetrics == null) {
 
@@ -42,7 +57,17 @@ public class Utils {
         return dp * mMetrics.density;
     }
 
+
+    /**
+     *
+     * Rand int
+     *
+     * @param i  the i
+     * @param i1  the i1
+     * @return float
+     */
     public static float randInt(int i, int i1) {
+
         // NOTE: This will (intentionally) not run as written so that folks
         // copy-pasting have to think about how to initialize their
         // Random instance.  Initialization of the Random instance is outside

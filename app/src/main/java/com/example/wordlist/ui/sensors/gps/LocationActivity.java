@@ -1,13 +1,7 @@
 package com.example.wordlist.ui.sensors.gps;
 
-import java.io.IOException;
-import java.util.List;
-import java.util.Locale;
-
 import android.Manifest;
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -22,7 +16,6 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -33,6 +26,14 @@ import androidx.core.app.ActivityCompat;
 
 import com.example.wordlist.R;
 
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
+
+
+/**
+ * The class Location activity extends application compat activity
+ */
 public class LocationActivity extends AppCompatActivity {
 
     private LocationManager locationMangaer = null;
@@ -46,7 +47,15 @@ public class LocationActivity extends AppCompatActivity {
     private Boolean flag = false;
 
     @Override
+
+/**
+ *
+ * On create
+ *
+ * @param savedInstanceState  the saved instance state
+ */
     public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_location);
 
@@ -87,7 +96,16 @@ public class LocationActivity extends AppCompatActivity {
                 .setTitle("** Gps Status **")
                 .setPositiveButton("Gps On",
                         new DialogInterface.OnClickListener() {
+
+                            /**
+                             *
+                             * On click
+                             *
+                             * @param dialog  the dialog
+                             * @param id  the id
+                             */
                             public void onClick(DialogInterface dialog, int id) {
+
                                 // finish the current activity
                                 // AlertBoxAdvance.this.finish();
                                 Intent myIntent = new Intent(
@@ -98,7 +116,16 @@ public class LocationActivity extends AppCompatActivity {
                         })
                 .setNegativeButton("Cancel",
                         new DialogInterface.OnClickListener() {
+
+                            /**
+                             *
+                             * On click
+                             *
+                             * @param dialog  the dialog
+                             * @param id  the id
+                             */
                             public void onClick(DialogInterface dialog, int id) {
+
                                 // cancel the dialog box
                                 dialog.cancel();
                             }
@@ -110,7 +137,15 @@ public class LocationActivity extends AppCompatActivity {
     /*----------Listener class to get coordinates ------------- */
     private class MyLocationListener implements LocationListener {
         @Override
+
+/**
+ *
+ * On location changed
+ *
+ * @param loc  the loc
+ */
         public void onLocationChanged(Location loc) {
+
 
             editLocation.setText("");
             pb.setVisibility(View.INVISIBLE);
@@ -149,18 +184,38 @@ public class LocationActivity extends AppCompatActivity {
 
         @Override
         public void onProviderDisabled(String provider) {
-            // TODO Auto-generated method stub         
+
+            // TODO Auto-generated method stub
         }
 
         @Override
+
+/**
+ *
+ * On provider enabled
+ *
+ * @param provider  the provider
+ */
         public void onProviderEnabled(String provider) {
-            // TODO Auto-generated method stub         
+
+            // TODO Auto-generated method stub
         }
 
         @Override
+
+
+/**
+ *
+ * On status changed
+ *
+ * @param provider  the provider
+ * @param int  the int
+ * @param extras  the extras
+ */
         public void onStatusChanged(String provider,
                                     int status, Bundle extras) {
-            // TODO Auto-generated method stub         
+
+            // TODO Auto-generated method stub
         }
     }
 }

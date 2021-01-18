@@ -12,8 +12,6 @@ import androidx.lifecycle.ViewModelProviders;
 import com.example.wordlist.R;
 import com.example.wordlist.network.WordsTranslaterAPI;
 import com.example.wordlist.network.WordsTranslaterServices;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import java.util.List;
 
@@ -23,6 +21,10 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+
+/**
+ * The class Translate activity extends application compat activity
+ */
 public class TranslateActivity extends AppCompatActivity{
     static final String BASE_URL = "https://google-translate1.p.rapidapi.com/";
     private EditText textToTranslate;
@@ -54,7 +56,14 @@ public class TranslateActivity extends AppCompatActivity{
     }
 
 
+
+    /**
+     *
+     * Translate
+     *
+     */
     public void translate() {
+
         String translateText = textToTranslate.getText().toString().trim();
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -67,7 +76,16 @@ public class TranslateActivity extends AppCompatActivity{
         Call<WordsTranslaterAPI> call = wordsTranslaterServices.getTranslatedText(translateText, "nl", "en");
         call.enqueue(new Callback<WordsTranslaterAPI>() {
             @Override
+
+/**
+ *
+ * On response
+ *
+ * @param call  the call
+ * @param response  the response
+ */
             public void onResponse(Call<WordsTranslaterAPI> call, Response<WordsTranslaterAPI> response) {
+
                 if(response.body() != null){
                     WordsTranslaterAPI wordsTranslaterAPI = response.body();
                     List translations = wordsTranslaterAPI.data.translations;
@@ -77,7 +95,16 @@ public class TranslateActivity extends AppCompatActivity{
             }
 
             @Override
+
+/**
+ *
+ * On failure
+ *
+ * @param call  the call
+ * @param t  the t
+ */
             public void onFailure(Call<WordsTranslaterAPI> call, Throwable t) {
+
                 System.out.println(t.toString());
                 call.cancel();
             }

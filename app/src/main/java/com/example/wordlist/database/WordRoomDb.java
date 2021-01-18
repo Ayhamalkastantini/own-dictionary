@@ -12,14 +12,32 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import com.example.wordlist.domain.Words;
 
 @Database(entities = Words.class, version = 1)
+
+/**
+ * The class Abstract word room db extends room database
+ */
 public abstract class WordRoomDb extends RoomDatabase {
 
     private static WordRoomDb instance;
 
-    public abstract WordsDao wordsDao();
+    /**
+     *
+     * Words dao
+     *
+     * @param //Singlton
+        the // singlton
+
+     * @return WordsDao
+     * @throws ;
 
     //Singlton
+    public static synchronized WordRoomDb getInstance(Context context
+     */
+    public abstract WordsDao wordsDao();
+
+    // Singlton
     public static synchronized WordRoomDb getInstance(Context context) {
+
         if (instance == null) {
             instance = Room.databaseBuilder(context.getApplicationContext(),
                     WordRoomDb.class, "word3-database")
@@ -32,7 +50,15 @@ public abstract class WordRoomDb extends RoomDatabase {
 
     private static RoomDatabase.Callback roomCallBack = new RoomDatabase.Callback() {
         @Override
+
+/**
+ *
+ * On create
+ *
+ * @param SupportSQLiteDatabase  the support SQ lite database
+ */
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
+
             super.onCreate(db);
             new PopulateDataAsyncTask(instance).execute();
         }

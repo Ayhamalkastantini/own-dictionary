@@ -28,6 +28,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
+
+/**
+ * The class Main activity extends application compat activity
+ */
 public class MainActivity extends AppCompatActivity {
     //veiw Model
     private WordViewModel mWordViewModel;
@@ -46,7 +50,15 @@ public class MainActivity extends AppCompatActivity {
         FloatingActionButton floatingActionButton = findViewById(R.id.button_add_word);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
+
+/**
+ *
+ * On click
+ *
+ * @param view  the view
+ */
             public void onClick(View view) {
+
                 //go to the add activity
                 Intent i = new Intent(MainActivity.this, AddNewWordActivity.class);
                 startActivityForResult(i, 1);
@@ -67,7 +79,15 @@ public class MainActivity extends AppCompatActivity {
         mWordViewModel = ViewModelProviders.of(this).get(WordViewModel.class);
         mWordViewModel.getAllWords().observe(this, new Observer<List<Words>>() {
             @Override
+
+/**
+ *
+ * On changed
+ *
+ * @param words  the words
+ */
             public void onChanged(List<Words> words) {
+
                 //Update UI
                 //RecyclerView
                 mWordAdapter.setWords(words);
@@ -78,7 +98,15 @@ public class MainActivity extends AppCompatActivity {
 
         mWordAdapter.OnItemClickListener(new WordAdapter.OnItemCliclListener() {
             @Override
+
+/**
+ *
+ * On item click
+ *
+ * @param word  the word
+ */
             public void onItemClick(Words word) {
+
                 Intent i = new Intent(MainActivity.this, AddNewWordActivity.class);
                 i.putExtra(AddNewWordActivity.EXTRA_ID, word.getId());
                 i.putExtra(AddNewWordActivity.EXTRA_WORD, word.getWordName());
@@ -91,29 +119,66 @@ public class MainActivity extends AppCompatActivity {
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
                 ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
             @Override
+
+/**
+ *
+ * On move
+ *
+ * @param RecyclerView  the recycler view
+ * @param RecyclerView.ViewHolder  the recycler view. view holder
+ * @return boolean
+ */
             public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+
                 return false;
             }
 
             @Override
+
+/**
+ *
+ * On swiped
+ *
+ * @param RecyclerView.ViewHolder  the recycler view. view holder
+ * @param direction  the direction
+ */
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+
                 //delete item
                 int position = viewHolder.getAdapterPosition();
                 mWordViewModel.delete(mWordAdapter.getWordAt(position));
             }
         }).attachToRecyclerView(mRecyclerView);
-        
+
     }
 
     @Override
+
+/**
+ *
+ * On create options menu
+ *
+ * @param menu  the menu
+ * @return boolean
+ */
     public boolean onCreateOptionsMenu(Menu menu) {
+
         MenuInflater m = getMenuInflater();
         m.inflate(R.menu.main_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
+
+/**
+ *
+ * On options item selected
+ *
+ * @param MenuItem  the menu item
+ * @return boolean
+ */
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
         switch (item.getItemId()) {
             case R.id.translate:
                 Intent i = new Intent(MainActivity.this, TranslateActivity.class);

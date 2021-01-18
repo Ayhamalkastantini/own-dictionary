@@ -3,11 +3,12 @@ package com.example.wordlist.network;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import retrofit2.Retrofit;
 
+/**
+ * The class Words translater AP I
+ */
 public class WordsTranslaterAPI {
 
     @SerializedName("data")
@@ -25,7 +26,15 @@ public class WordsTranslaterAPI {
         @Expose
         public String translatedText;
 
+
+        /**
+         *
+         * Gets the translated text
+         *
+         * @return the translated text
+         */
         public String getTranslatedText() {
+
             return translatedText;
         }
     }

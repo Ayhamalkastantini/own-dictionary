@@ -14,6 +14,10 @@ import android.view.View;
 import com.example.wordlist.R;
 
 
+
+/**
+ * The class Thermometer extends view
+ */
 public class Thermometer extends View {
 
     private float outerCircleRadius, outerRectRadius;
@@ -39,22 +43,60 @@ public class Thermometer extends View {
     private float currentTemp = MIN_TEMP;
     private Rect rect = new Rect();
 
+
+    /**
+     *
+     * Thermometer
+     *
+     * @param context  the context
+     * @return public
+     */
     public Thermometer(Context context) {
+
         super(context);
         init(context, null);
     }
 
+
+    /**
+     *
+     * Thermometer
+     *
+     * @param context  the context
+     * @param attrs  the attrs
+     * @return public
+     */
     public Thermometer(Context context, AttributeSet attrs) {
+
         super(context, attrs);
         init(context,attrs);
     }
 
+
+    /**
+     *
+     * Thermometer
+     *
+     * @param context  the context
+     * @param attrs  the attrs
+     * @param defStyleAttr  the def style attr
+     * @return public
+     */
     public Thermometer(Context context, AttributeSet attrs, int defStyleAttr) {
+
         super (context, attrs, defStyleAttr);
         init(context, attrs);
     }
 
+
+    /**
+     *
+     * Sets the current temp
+     *
+     * @param currentTemp  the current temp
+     */
     public void setCurrentTemp(float currentTemp) {
+
         if (currentTemp > maxTemp) {
             this.currentTemp = maxTemp;
         } else if (currentTemp < minTemp) {
@@ -66,11 +108,28 @@ public class Thermometer extends View {
         invalidate();
     }
 
+
+    /**
+     *
+     * Gets the min temp
+     *
+     * @return the min temp
+     */
     public float getMinTemp() {
+
         return minTemp;
     }
 
+
+    /**
+     *
+     * Init
+     *
+     * @param context  the context
+     * @param attrs  the attrs
+     */
     public void init(Context context, AttributeSet attrs) {
+
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.Thermometer);
         outerCircleRadius = typedArray.getDimension(R.styleable.Thermometer_radius, 20f);
         int outerColor = typedArray.getColor(R.styleable.Thermometer_outerColor, Color.GRAY);
@@ -112,7 +171,15 @@ public class Thermometer extends View {
 
     }
 
+
+    /**
+     *
+     * Change unit
+     *
+     * @param isCelsius  the is celsius
+     */
     public void changeUnit(boolean isCelsius) {
+
         if (isCelsius) {
             nbGraduations = NB_GRADUATIONS;
             maxTemp = MAX_TEMP;
