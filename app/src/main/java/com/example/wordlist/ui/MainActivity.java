@@ -51,12 +51,12 @@ public class MainActivity extends AppCompatActivity {
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
 
-/**
- *
- * On click
- *
- * @param view  the view
- */
+        /**
+         *
+         * On click
+         *
+         * @param view  the view
+         */
             public void onClick(View view) {
 
                 //go to the add activity
@@ -80,12 +80,12 @@ public class MainActivity extends AppCompatActivity {
         mWordViewModel.getAllWords().observe(this, new Observer<List<Words>>() {
             @Override
 
-/**
- *
- * On changed
- *
- * @param words  the words
- */
+            /**
+             *
+             * On changed
+             *
+             * @param words  the words
+             */
             public void onChanged(List<Words> words) {
 
                 //Update UI

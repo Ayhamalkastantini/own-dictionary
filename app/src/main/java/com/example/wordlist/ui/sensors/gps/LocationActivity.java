@@ -82,7 +82,6 @@ public class LocationActivity extends AppCompatActivity {
             }else{
                 locationMangaer.requestLocationUpdates(LocationManager
                         .GPS_PROVIDER, 5000, 10, locationListener);
-
             }
         });
     }

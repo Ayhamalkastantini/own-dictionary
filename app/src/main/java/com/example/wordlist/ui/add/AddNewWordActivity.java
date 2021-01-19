@@ -83,13 +83,13 @@ public class AddNewWordActivity extends AppCompatActivity {
 
     @Override
 
-/**
- *
- * On options item selected
- *
- * @param MenuItem  the menu item
- * @return boolean
- */
+    /**
+     *
+     * On options item selected
+     *
+     * @param MenuItem  the menu item
+     * @return boolean
+     */
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId()) {

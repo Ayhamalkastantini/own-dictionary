@@ -17,7 +17,6 @@ public class AddNewWordViewModel extends AndroidViewModel {
     private WordsRepository mRepository;
 
 
-
     /**
      *
      * Add new word view model

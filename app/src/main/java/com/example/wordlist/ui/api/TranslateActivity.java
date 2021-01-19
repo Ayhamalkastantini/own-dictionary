@@ -34,7 +34,6 @@ public class TranslateActivity extends AppCompatActivity{
     //view Model for translate Activity
     private TranslateViewModel translateViewModel;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,34 +74,38 @@ public class TranslateActivity extends AppCompatActivity{
 
         Call<WordsTranslaterAPI> call = wordsTranslaterServices.getTranslatedText(translateText, "nl", "en");
         call.enqueue(new Callback<WordsTranslaterAPI>() {
-            @Override
 
-/**
- *
- * On response
- *
- * @param call  the call
- * @param response  the response
- */
+            /**
+             *
+             * On response
+             *
+             * @param call  the call
+             * @param response  the response
+             */
+            @Override
             public void onResponse(Call<WordsTranslaterAPI> call, Response<WordsTranslaterAPI> response) {
 
                 if(response.body() != null){
-                    WordsTranslaterAPI wordsTranslaterAPI = response.body();
-                    List translations = wordsTranslaterAPI.data.translations;
-                    WordsTranslaterAPI.Translation translation = (WordsTranslaterAPI.Translation) translations.get(0);
-                    translatedText.setText(translation.getTranslatedText());
+                    try{
+                        WordsTranslaterAPI wordsTranslaterAPI = response.body();
+                        List translations = wordsTranslaterAPI.data.translations;
+                        WordsTranslaterAPI.Translation translation = (WordsTranslaterAPI.Translation) translations.get(0);
+                        translatedText.setText(translation.getTranslatedText());
+                    }catch (NullPointerException ex){
+                        throw ex;
+                    }
                 }
             }
 
-            @Override
 
-/**
- *
- * On failure
- *
- * @param call  the call
- * @param t  the t
- */
+            /**
+             *
+             * On failure
+             *
+             * @param call  the call
+             * @param t  the t
+             */
+            @Override
             public void onFailure(Call<WordsTranslaterAPI> call, Throwable t) {
 
                 System.out.println(t.toString());

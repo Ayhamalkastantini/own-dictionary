@@ -21,7 +21,6 @@ public class WordViewModel extends AndroidViewModel {
 
     private LiveData<List<Words>> mAllWords;
 
-
     /**
      *
      * Word view model

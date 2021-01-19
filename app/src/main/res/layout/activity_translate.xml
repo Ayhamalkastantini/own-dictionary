@@ -34,6 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/translateText"
         android:padding="30px"
+        android:textSize="32dp"
         android:layout_marginTop="52dp" />
 
 

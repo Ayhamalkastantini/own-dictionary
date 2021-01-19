@@ -75,11 +75,11 @@ public class ThermometerActivity extends AppCompatActivity implements SensorEven
                 runOnUiThread(new Runnable() {
                     @Override
 
-/**
- *
- * Run
- *
- */
+                    /**
+                     *
+                     * Run
+                     *
+                     */
                     public void run() {
 
                         thermometer.setCurrentTemp(temperature);

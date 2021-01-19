@@ -15,7 +15,7 @@ public class WordsTranslaterAPI {
     @Expose
     public Data data;
 
-    public class Data {
+    public static class Data extends WordsTranslaterAPI {
         @SerializedName("translations")
         @Expose
         public List<Translation> translations;
@@ -25,7 +25,6 @@ public class WordsTranslaterAPI {
         @SerializedName("translatedText")
         @Expose
         public String translatedText;
-
 
         /**
          *
